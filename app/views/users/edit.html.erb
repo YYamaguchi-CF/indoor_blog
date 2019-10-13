@@ -1,2 +1,32 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<div class="row">
+	<div class="col-sm-6 offset-sm-3">
+	<%= form_with(model: @user, local: true) do |f| %>
+	
+		<%= render 'layouts/error_messages', model: f.object %>
+	
+		<div class="form-group">
+	  	<%= image_tag current_user.image.url %>
+	  </div>
+	  
+	  <div class="upload-btn-wrapper">
+		  <button class="btndash">プロフィール画像登録</button>
+			<%= f.file_field :image, onChange:'inform()' %>
+		</div>
+		<h5 id="file_name"></h5>
+		
+		<div class="form-group">
+	  	<%= f.label :name %>
+	  	<%= f.text_field :name, class: 'form-control' %>
+	  </div>
+		
+		<div class="form-group">
+	  	<%= f.label :introduce %>
+	  	<%= f.text_area :introduce, class: 'form-control', rows: 3 %>
+	  </div>
+		
+		<%= f.submit '保存する', class: 'btn btn-success mr-2' %>
+		<%= link_to 'キャンセル', user_path(current_user), class: 'btn btn-outline-dark' %>
+		
+	<% end %>
+	</div>
+</div>

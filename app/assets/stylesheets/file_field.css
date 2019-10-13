@@ -1,0 +1,35 @@
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+ 
+.btndash {
+    border: 2px solid gray;
+    color: white;
+    background-color: gray;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.upload-btn-wrapper:hover {
+    background-color: gray;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+ 
+.upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+h5#file_name {
+    display: inline-block;
+    color: #eb13ca;
+    float: center;
+}

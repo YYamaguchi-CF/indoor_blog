@@ -8,4 +8,5 @@ ja:
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード(確認)
-        
+        introduce: 自己紹介
+        image: プロフィール画像

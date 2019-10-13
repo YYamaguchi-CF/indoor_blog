@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :login_required, except: [:new, :create, :show]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
   
   def new
     @user = User.new
@@ -19,13 +20,19 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
   end
 
   def edit
   end
   
   def update
+    if @user.update(user_params)
+      flash[:success] = 'マイページを変更しました。'
+      redirect_to @user
+    else
+      flash.now[:warning] = '変更に失敗しました。'
+      render 'edit'
+    end
   end
   
   def destroy
@@ -44,4 +51,7 @@ class UsersController < ApplicationController
       )
   end
   
+  def set_user
+    @user = User.find(params[:id])
+  end
 end
