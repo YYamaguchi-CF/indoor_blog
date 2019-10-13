@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Indoor Blog</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+
+    <%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
+    <style>
+    	div div h1 {
+    		margin: 50px 0px;
+    		font-weight: bold;
+    	}
+    	
+    	div div h4 {
+    		font-weight: bold;
+    	}
+    	
+    	.link-login a {
+    		color: #255e16;
+    	}
+    </style>
+  </head>
+
+  <body>
+    
+    <div class="container">
+    	
+    	<div class="text-center">
+    		<h1>Indoor Blog</h1>
+  		</div>
+    	<div class="center jumbotron">
+    		<div class="text-center mb-5">
+  				<h4>Indoor Blogに登録する</h4>
+  			</div>
+  			
+  			<div class="row">
+  				<div class="col-sm-6 offset-sm-3">
+  					
+  					<%= form_with(model: @user, local: true) do |f| %>
+  					
+  						<%= render 'layouts/error_messages', model: f.object %>
+  						
+  						<div class="form-group">
+  							<%= f.label :name %>
+  							<%= f.text_field :name, class: 'form-control' %>
+  						</div>
+  						
+  						<div class="form-group">
+  							<%= f.label :email %>
+  							<%= f.email_field :email, class: 'form-control' %>
+  						</div>
+  						
+  						<div class="form-group">
+  							<%= f.label :password %>
+  							<%= f.password_field :password, class: 'form-control' %>
+  						</div>
+  						
+  						<div class="form-group">
+  							<%= f.label :password_confirmation %>
+  							<%= f.password_field :password_confirmation, class: 'form-control' %>
+  						</div>
+  						
+  						<%= f.submit '登録する', class: 'btn btn-success btn-block mt-5' %>
+  						
+  					<% end %>
+  					
+  				</div>
+  			</div>
+			</div>
+			
+			<div class="text-center link-login">
+				<%= link_to 'ログイン', '#' %>
+			</div>
+			
+    </div>
+  </body>
+</html>
