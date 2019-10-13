@@ -7,12 +7,25 @@
 
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav">
-        <form class="mr-4 form-inline my-2 my-lg-0">
+      	<form class="mr-4 form-inline my-2 my-lg-0">
      			<input class="form-control mr-sm-2" type="search" placeholder="キーワードや作者名" aria-label="Search">
-     			<button class="btn btn-success my-2 my-sm-0" type="submit">検索</button>
+     			<button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i> 検索</button>
    			</form>
-        <li class="nav-item"><a href="#" class="nav-link">ログイン</a></li>
-        <li class="nav-item"><%= link_to '新規登録', new_user_path, class: 'nav-link' %></li>
+      	<% if login? %>
+        	<li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="far fa-grin-alt" style="font-size: 30px;"></i></a>
+            <ul class="dropdown-menu dropdown-menu-right">
+              <li class="dropdown-item"><%= link_to 'マイページ', user_path(current_user) %></li>
+              <li class="dropdown-item">マイアカウント設定</li>
+              <li class="dropdown-divider"></li>
+              <li class="dropdown-item"><%= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-item' %></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link btn btn-primary", style="color: white;", href="#"><i class="fas fa-pen"></i> ブログ投稿</a></li>
+   			<% else %>
+        	<li class="nav-item"><%= link_to 'ログイン', login_path, class: 'nav-link' %></li>
+        	<li class="nav-item"><%= link_to '新規登録', new_user_path, class: 'nav-link' %></li>
+        <% end %>
       </ul>
     </div>
   </nav>

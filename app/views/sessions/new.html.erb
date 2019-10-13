@@ -45,48 +45,36 @@
   		</div>
     	<div class="center jumbotron">
     		<div class="text-center mb-5">
-  				<h4>Indoor Blogに登録する</h4>
+  				<h4>ログイン</h4>
   			</div>
   			
   			<div class="row">
   				<div class="col-sm-6 offset-sm-3">
   					
-  					<%= form_with(model: @user, local: true) do |f| %>
-  					
-  						<%= render 'layouts/error_messages', model: f.object %>
-  						
+  					<%= form_with(url: login_path, scope: :session, local: true) do |f| %>
+  					  
+  					  <%= render 'layouts/flash_messages' %>
+  					  
   						<div class="form-group">
-  							<%= f.label :name %>
-  							<%= f.text_field :name, class: 'form-control' %>
-  						</div>
-  						
-  						<div class="form-group">
-  							<%= f.label :email %>
+  							<%= f.label :email, 'メールアドレス' %>
   							<%= f.email_field :email, class: 'form-control' %>
   						</div>
   						
   						<div class="form-group">
-  							<%= f.label :password %>
+  							<%= f.label :password, 'パスワード' %>
   							<%= f.password_field :password, class: 'form-control' %>
   						</div>
-  						
-  						<div class="form-group">
-  							<%= f.label :password_confirmation %>
-  							<%= f.password_field :password_confirmation, class: 'form-control' %>
-  						</div>
-  						
-  						<%= f.submit '登録する', class: 'btn btn-success btn-block mt-5' %>
-  						
+
+  						<%= f.submit 'ログイン', class: 'btn btn-success btn-block mt-5' %>
+  					  <div class="text-center link-login mt-3">
+				        <%= link_to '新規登録はこちら', new_user_path %>
+			        </div>
+			        
   					<% end %>
   					
   				</div>
   			</div>
-			</div>
-			
-			<div class="text-center link-login">
-				<%= link_to 'ログイン', login_path %>
-			</div>
-			
+		</div>
     </div>
   </body>
 </html>
