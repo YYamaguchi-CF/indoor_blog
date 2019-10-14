@@ -15,14 +15,14 @@
         	<li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
             	<% if current_user.image? %>
-            		<%= image_tag current_user.image.thumb.url %>
+            		<%= image_tag current_user.image.thumb.url, class: 'image-radius'%> <%= current_user.name %>
             	<% else %>
-            		<i class="far fa-grin-alt" style="font-size: 30px;"></i><%= current_user.name %>
+            		<i class="far fa-grin-alt" style="font-size: 30px;"></i> <%= current_user.name %>
             	<% end %>
             </a>
             <ul class="dropdown-menu dropdown-menu-right">
               <li class="dropdown-item"><%= link_to 'マイページ', user_path(current_user) %></li>
-              <li class="dropdown-item">マイアカウント設定</li>
+              <li class="dropdown-item"><%= link_to 'マイアカウント情報', account_path %></li>
               <li class="dropdown-divider"></li>
               <li class="dropdown-item"><%= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-item' %></li>
             </ul>

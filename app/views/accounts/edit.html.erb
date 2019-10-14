@@ -1,0 +1,30 @@
+<div class="text-center mt-4">
+	<h2>マイアカウントの編集</h2>
+</div>
+
+<div class="center jumbotron mt-4">
+	<div class="row">
+		<div class="col-sm-6 offset-sm-3">
+			<%= form_with(model: @user, url: account_path, scope: :account, local: true) do |f| %>
+	
+			<%= render 'layouts/error_messages', model: f.object %>
+			
+			<div class="form-group">
+				<%= f.label :name %>
+				<%= f.text_field :name, class: 'form-control' %>
+			</div>
+  						
+			<div class="form-group">
+				<%= f.label :email %>
+				<%= f.email_field :email, class: 'form-control' %>
+			</div>
+			
+			<%= f.submit '更新する', class: 'btn btn-success mt-4' %>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+<div class="d-flex justify-content-end">
+	<%= link_to '戻る', account_path %>
+</div>

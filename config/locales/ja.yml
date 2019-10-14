@@ -10,3 +10,8 @@ ja:
         password_confirmation: パスワード(確認)
         introduce: 自己紹介
         image: プロフィール画像
+        current_password: 現在のパスワード
+  errors:
+    messages:
+      extension_whitelist_error: はjpg, jpeg, gif, png以外登録できません。
+      wrong: が正しくありません。

@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :login_required, except: [:new, :create, :show]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
   
   def new
     @user = User.new
@@ -36,6 +37,9 @@ class UsersController < ApplicationController
   end
   
   def destroy
+    @user.destroy
+    flash[:warning] = '退会しました。'
+    redirect_to root_url
   end
   
   private
@@ -47,11 +51,19 @@ class UsersController < ApplicationController
       :email, 
       :password, 
       :password_confirmation,
-      :image
+      :image,
+      :remove_image
       )
   end
   
   def set_user
     @user = User.find(params[:id])
+  end
+  
+  def correct_user
+    set_user
+    unless current_user == @user
+      redirect_to root_url
+    end
   end
 end
