@@ -1,0 +1,22 @@
+<nav class="janre-tab-color">
+	<ul class="nav nav-tabs row">
+	  <li class="nav-item col-sm-2 text-center mt-1">
+	    <%= link_to_unless_current 'すべて', root_path, class: 'nav-link' %>
+	  </li>
+	  <li class="nav-item col-sm-2 text-center mt-1">
+	    <%= link_to_unless_current '漫画', janres_manga_path, class: 'nav-link' %>
+	  </li>
+	  <li class="nav-item col-sm-2 text-center mt-1">
+	    <%= link_to_unless_current 'アニメ', janres_anime_path, class: 'nav-link' %>
+	  </li>
+	  <li class="nav-item col-sm-2 text-center mt-1">
+	    <%= link_to_unless_current 'ゲーム', janres_game_path, class: 'nav-link' %>
+	  </li>
+	  <li class="nav-item col-sm-2 text-center mt-1">
+	    <%= link_to_unless_current '映画', janres_movie_path, class: 'nav-link' %>
+	  </li>
+	  <li class="nav-item col-sm-2 text-center mt-1">
+	    <%= link_to_unless_current 'その他', janres_other_path, class: 'nav-link' %>
+	  </li>
+	</ul>
+</nav>
