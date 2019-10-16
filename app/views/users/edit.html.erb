@@ -5,16 +5,31 @@
 		<%= render 'layouts/error_messages', model: f.object %>
 	
 		<div class="form-group">
-	  	<%= image_tag current_user.image.url %>
+	  	<%= image_tag current_user.image.url, id: :image_prev %>
 	  </div>
-	  
+	  <script type="text/javascript">
+  		$(function() {
+    		function readURL(input) {
+       		 if (input.files && input.files[0]) {
+        		var reader = new FileReader();
+      		  reader.onload = function (e) {
+   		 $('#image_prev').attr('src', e.target.result);
+       		 }
+        		reader.readAsDataURL(input.files[0]);
+      		  }
+   		 }
+    		$("#user_image").change(function(){
+        		readURL(this);
+    		});
+  		});
+		</script>
 	  <% if current_user.image? %>
 	  	<p><%= f.check_box :remove_image %>画像を削除する</p>
 	  <% end %>
 	  
 	  <div class="upload-btn-wrapper">
 		  <button class="btndash"><i class="fas fa-file" style="font-size: 20px;"></i> プロフィール画像登録</button>
-			<%= f.file_field :image, onChange:'inform()' %>
+			<%= f.file_field :image, id: :user_image,onChange:'inform()' %>
 		</div>
 		<h5 id="file_name"></h5>
 		

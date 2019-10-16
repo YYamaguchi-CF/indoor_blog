@@ -52,7 +52,8 @@ class BlogsController < ApplicationController
       :title,
       :body,
       :janre,
-      :blog_images
+      :blog_images,
+      :remove_blog_images
       )
   end
 end
