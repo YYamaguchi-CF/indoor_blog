@@ -1,0 +1,8 @@
+.janre-color {
+    width: 80px;
+    text-align: center;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 5px 5px rgba(0,0,0,0.3);
+    letter-spacing: 2px;
+}

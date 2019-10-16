@@ -2,6 +2,7 @@ ja:
   activerecord:
     models:
       user: ユーザー
+      blog: ブログ
     attributes:
       user:
         name: ニックネーム
@@ -11,6 +12,16 @@ ja:
         introduce: 自己紹介
         image: プロフィール画像
         current_password: 現在のパスワード
+      blog:
+        title: 記事タイトル
+        body: 記事内容
+        janre: ジャンル
+        blog_image: ブログ画像
+        manga: 漫画
+        anime: アニメ
+        game: ゲーム
+        movie: 映画
+        other: その他
   errors:
     messages:
       extension_whitelist_error: はjpg, jpeg, gif, png以外登録できません。

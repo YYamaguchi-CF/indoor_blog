@@ -1,3 +1,12 @@
 .image-radius {
     border-radius: 25px;
 }
+
+.name-link a {
+    color: black;
+    text-decoration: none;
+}
+
+.body-font-size p {
+    font-size: 18px;
+}

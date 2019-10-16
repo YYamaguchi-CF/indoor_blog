@@ -1,6 +1,6 @@
-<header class="mb-4">
+<header class="mb-4 sticky-top">
   <nav class="navbar navbar-expand-sm navbar-light bg-light" >
-    <a class="navbar-brand" href="/"><strong>Indoor Blog</strong></a>
+    <a class="navbar-brand" href="/"><i class="far fa-sticky-note"></i> <strong>Indoor Blog</strong></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -17,7 +17,7 @@
             	<% if current_user.image? %>
             		<%= image_tag current_user.image.thumb.url, class: 'image-radius'%> <%= current_user.name %>
             	<% else %>
-            		<i class="far fa-grin-alt" style="font-size: 30px;"></i> <%= current_user.name %>
+            		<i class="far fa-grin-alt" style="font-size: 30px; color: black;"></i> <%= current_user.name %>
             	<% end %>
             </a>
             <ul class="dropdown-menu dropdown-menu-right">
@@ -27,7 +27,11 @@
               <li class="dropdown-item"><%= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-item' %></li>
             </ul>
           </li>
-          <li class="nav-item"><a class="nav-link btn btn-primary", style="color: white;", href="#"><i class="fas fa-pen"></i> ブログ投稿</a></li>
+          <li class="nav-item">
+          	<%= link_to new_blog_path, class: 'nav-link btn btn-primary' do %>
+          		<span style="color: white;"><i class="fas fa-pen"></i> ブログ投稿</span>
+          	<% end %>
+          </li>
    			<% else %>
         	<li class="nav-item"><%= link_to 'ログイン', login_path, class: 'nav-link' %></li>
         	<li class="nav-item"><%= link_to '新規登録', new_user_path, class: 'nav-link' %></li>
