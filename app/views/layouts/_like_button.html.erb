@@ -1,0 +1,19 @@
+<% if login? %>
+	<% if current_user.favoblog?(blog) %>
+	  <%= form_with(model: current_user.favorites.find_by(blog_id: blog.id), local: true, method: :delete) do |f| %>
+	    <%= hidden_field_tag :blog_id, blog.id %>
+	    <%= button_tag type: 'submit', class: 'like-button' do %>
+	    	<i class="fas fa-heart"></i> <%= likes_count(blog) %>
+	    <% end %>
+	  <% end %>
+	<% else %>
+	  <%= form_with(model: current_user.favorites.build, local: true) do |f| %>
+	    <%= hidden_field_tag :blog_id, blog.id %>
+	    <%= button_tag type: 'submit', class: 'like-button' do %>
+	    	<i class="far fa-heart"></i> <%= likes_count(blog) %>
+	    <% end %>
+	  <% end %>
+	<% end %>
+<% else %>
+	<span class="like-button"><i class="far fa-heart"></i> <%= likes_count(blog) %></span>
+<% end %>

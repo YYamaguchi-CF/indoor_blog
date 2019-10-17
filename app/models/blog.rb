@@ -1,6 +1,4 @@
 class Blog < ApplicationRecord
-  belongs_to :user, foreign_key: 'user_id'
-  
   mount_uploader :blog_images, BlogImagesUploader
   
   JANRE_VALUES = %w(manga anime game movie other)
@@ -14,6 +12,10 @@ class Blog < ApplicationRecord
   scope :game, -> { where(janre: 'game').order(created_at: :desc) }
   scope :movie, -> { where(janre: 'movie').order(created_at: :desc) }
   scope :other, -> { where(janre: 'other').order(created_at: :desc) }
+  
+  belongs_to :user, foreign_key: 'user_id'
+  has_many :favorites, foreign_key: 'blog_id', dependent: :destroy
+  has_many :users, through: :favorites
   
   class << self
     def janre_text(janre)

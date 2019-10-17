@@ -19,6 +19,9 @@
 		<% end %>
 		<span class="name-link"><%= link_to blog.user.name, user_path(blog.user) %></span>
 		<span style="color: #a39e9e;"><%= blog.created_at.strftime("%Y/%m/%d %H:%M") %></span>
+		<span class="d-flex justify-content-end">
+			<%= render 'layouts/like_button', blog: blog %>
+		</span>
 	</div>
 </div>
 <div class="border-bottom mt-4"></div>

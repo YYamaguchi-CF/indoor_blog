@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :login_required, except: [:new, :create, :show]
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :likes]
   before_action :correct_user, only: [:edit, :update, :destroy]
   
   def new
@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @blogs = @user.blogs.order(created_at: :desc).page(params[:page]).per(25)
   end
 
   def edit
@@ -40,6 +41,10 @@ class UsersController < ApplicationController
     @user.destroy
     flash[:warning] = '退会しました。'
     redirect_to root_url
+  end
+  
+  def likes
+    @favoblogs = @user.favoblogs.page(params[:page]).per(5)
   end
   
   private
@@ -65,5 +70,5 @@ class UsersController < ApplicationController
     unless current_user == @user
       redirect_to root_url
     end
-  end
+  end  
 end

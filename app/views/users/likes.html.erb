@@ -32,11 +32,11 @@
 </ul>
 <div class="row">
 	<div class="col-sm-6 offset-sm-3">
-		<% @blogs.each do |blog| %>
+		<% @favoblogs.each do |blog| %>
 			
 			<%= render 'toppages/blogs', blog: blog %>
 			
 		<% end %>
-		<div class="mt-5"><%= paginate @blogs %></div>
+		<div class="mt-5"><%= paginate @favoblogs %></div>
 	</div>
 </div>

@@ -15,4 +15,19 @@ class User < ApplicationRecord
 	has_secure_password
 	
 	has_many :blogs, dependent: :destroy
+	has_many :favorites
+	has_many :favoblogs, through: :favorites, source: :blog
+	
+	def like(blog)
+		favorites.find_or_create_by(blog_id: blog.id)
+	end
+	
+	def unlike(blog)
+		favorite = favorites.find_by(blog_id: blog.id)
+		favorite.destroy if favorite
+	end
+	
+	def favoblog?(blog)
+		self.favoblogs.include?(blog)
+	end
 end

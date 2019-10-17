@@ -1,8 +1,10 @@
 class BlogsController < ApplicationController
   before_action :login_required, except: [:show]
+  before_action :set_blog, only: [:edit, :update, :destroy]
   
   def show
     @blog = Blog.find(params[:id])
+    @likes_count = Favorite.where(blog_id: @blog.id).count
   end
 
   def new
@@ -23,12 +25,9 @@ class BlogsController < ApplicationController
   end
 
   def edit
-    @blog = current_user.blogs.find(params[:id])
   end
   
   def update
-    @blog = current_user.blogs.find(params[:id])
-    
     if @blog.update(blog_params)
       flash[:success] = 'ブログを編集しました。'
       redirect_to blog_path(@blog)
@@ -39,7 +38,6 @@ class BlogsController < ApplicationController
   end
   
   def destroy
-    @blog = current_user.blogs.find(params[:id])
     @blog.destroy
     flash[:warning] = 'ブログを削除しました。'
     redirect_to root_url
@@ -55,5 +53,9 @@ class BlogsController < ApplicationController
       :blog_images,
       :remove_blog_images
       )
+  end
+  
+  def set_blog
+    @blog = current_user.blogs.find(params[:id])
   end
 end

@@ -10,3 +10,11 @@
 .body-font-size p {
     font-size: 18px;
 }
+
+.like-button {
+    border: none;
+    background: none;
+    -webkit-appearance: none;
+    color: red;
+    font-size: 20px;
+}
