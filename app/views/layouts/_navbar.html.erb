@@ -7,17 +7,19 @@
 
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav">
-      	<form class="mr-4 form-inline my-2 my-lg-0">
-     			<input class="form-control mr-sm-2" type="search" placeholder="キーワードや作者名" aria-label="Search">
-     			<button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i> 検索</button>
-   			</form>
+      	<dl class="searchbox mt-2 mr-2">
+  				<%= search_form_for @q, url: root_path do |f| %>
+   			  <dt><%= f.text_field :title_or_body_or_user_name_cont ,placeholder: '投稿者名やキーワードなど' %></dt>
+ 			    <dd><%= f.submit ("検索") , class: 'search-btn'%></dd>
+ 			  <% end %>
+				</dl>
       	<% if login? %>
         	<li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
             	<% if current_user.image? %>
-            		<%= image_tag current_user.image.thumb.url, class: 'image-radius'%> <%= current_user.name %>
+            		<%= image_tag current_user.image.thumb.url, class: 'image-radius'%> <%= truncate current_user.name, length: 10 %>
             	<% else %>
-            		<i class="far fa-grin-alt" style="font-size: 30px; color: black;"></i> <%= current_user.name %>
+            		<i class="far fa-grin-alt" style="font-size: 30px; color: black;"></i> <%= truncate current_user.name, length: 10 %>
             	<% end %>
             </a>
             <ul class="dropdown-menu dropdown-menu-right">
@@ -28,13 +30,13 @@
             </ul>
           </li>
           <li class="nav-item">
-          	<%= link_to new_blog_path, class: 'nav-link btn btn-primary' do %>
+          	<%= link_to new_blog_path, class: 'nav-link btn btn-primary mt-1' do %>
           		<span style="color: white;"><i class="fas fa-pen"></i> ブログ投稿</span>
           	<% end %>
           </li>
    			<% else %>
-        	<li class="nav-item"><%= link_to 'ログイン', login_path, class: 'nav-link' %></li>
-        	<li class="nav-item"><%= link_to '新規登録', new_user_path, class: 'nav-link' %></li>
+        	<li class="nav-item"><%= link_to 'ログイン', login_path, class: 'nav-link mt-2' %></li>
+        	<li class="nav-item"><%= link_to '新規登録', new_user_path, class: 'nav-link mt-2' %></li>
         <% end %>
       </ul>
     </div>
