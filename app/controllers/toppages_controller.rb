@@ -21,4 +21,7 @@ class ToppagesController < ApplicationController
   def others
     @blogs = Blog.other.page(params[:page]).per(5)
   end
+  
+  def about
+  end
 end

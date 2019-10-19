@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: 'toppages#index' 
+  get 'about', to: 'toppages#about'
   # ----janres----
   get 'janres/manga', to: 'toppages#mangas'
   get 'janres/anime', to: 'toppages#animes'
