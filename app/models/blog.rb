@@ -1,4 +1,8 @@
 class Blog < ApplicationRecord
+	def self.ransackable_attributes(auth_object = nil)
+		%w[title body @user.name]
+	end
+
   mount_uploader :blog_images, BlogImagesUploader
   
   JANRE_VALUES = %w(manga anime game movie other)
