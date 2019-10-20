@@ -1,4 +1,5 @@
 class BlogsController < ApplicationController
+  before_action :correct_blog, only: [:edit, :update, :destroy]
   before_action :login_required, except: [:show]
   before_action :set_blog, only: [:edit, :update, :destroy]
   
@@ -57,5 +58,12 @@ class BlogsController < ApplicationController
   
   def set_blog
     @blog = current_user.blogs.find(params[:id])
+  end
+  
+  def correct_blog
+    @blog = Blog.find(params[:id])
+    unless current_user == @blog.user
+      redirect_back(fallback_location: root_path)
+    end
   end
 end

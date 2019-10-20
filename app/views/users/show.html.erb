@@ -1,35 +1,9 @@
-<div class="row">
-  <aside class="col-sm-4">
-    <div class="card">
-      <div class="card-body">
-        <div class="d-flex justify-content-center"><%= image_tag @user.image.url %></div>
-      </div>
-    </div>
-  </aside>
-  <div class="col-sm-8">
-  	<div class="card">
-      <div class="card-header">
-        <h2 class="card-title"><%= @user.name %></h2>
-      </div>
-      <div class="card-body">
-      	<p class="card-text"><%= simple_format @user.introduce %></p>
-      </div>
-    </div>
- 	</div>   
-</div>
-<div class="d-flex justify-content-end">
-	<% if current_user == @user %>
-		<h5>
-			<%= link_to edit_user_path(current_user), class: 'btn btn-secondary mt-2' do %>
-				<i class="fas fa-cog"></i> 設定
-			<%end%>
-		</h5>
-	<% end %>
-</div>
+<%= render 'users/introduce' %>
 <ul class="nav nav-tabs nav-justified mt-5">
   <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>"><%= @user.name %>さんのブログ一覧</a></li>
   <li class="nav-item"><a href="<%= likes_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(likes_user_path(@user)) %>"><%= @user.name %>さんのお気に入り一覧</a></li>
 </ul>
+
 <div class="row">
 	<div class="col-sm-6 offset-sm-3">
 		<% @blogs.each do |blog| %>

@@ -1,0 +1,30 @@
+<%= render 'users/introduce' %>
+
+<div class="row mt-5">
+	<div class="col-sm-6 offset-sm-3">
+		<div class="alert alert-dark text-center" role="alert">
+			<h4><%= @user.name + 'さんのフォロワー一覧' %></h4>
+		</div>
+		<% @followers.each do |follow| %>
+			<div class="container">
+				<div class="row">
+					<div class="mt-5 col-sm-8">
+						<% if follow.image? %>
+							<%= link_to (image_tag follow.image.thumb_secound.url, class: 'image-radius'), user_path(follow) %>
+						<% else %>
+							<%= link_to user_path(follow) do %>
+								<i class="far fa-grin-alt" style="font-size: 80px; color: black;"></i>
+							<% end %>
+						<% end %>
+						<span class="name-link"><%= link_to follow.name, user_path(follow) %></span>						
+					</div>
+					<div class="mt-5 col-sm-4">
+						<%= render 'relationships/follow_button', user: follow %>
+					</div>
+				</div>
+			</div>
+			<div class="border-bottom mt-4"></div>
+		<% end %>
+		<div class="mt-5"><%= paginate @followers %></div>
+	</div>
+</div>

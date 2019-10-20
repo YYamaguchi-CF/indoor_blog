@@ -16,10 +16,13 @@ Rails.application.routes.draw do
   resources :users, except: [:index] do
   	member do
   		get :likes
+  		get :followings
+  		get :followers
   	end
   end
   resources :blogs, except: [:index]
   resource :account, only: [:show, :edit, :update]
   resource :password, only: [:show, :edit, :update]
   resources :favorites, only: [:create, :destroy]
+  resources :relationships, only: [:create, :destroy]
 end

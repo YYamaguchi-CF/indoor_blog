@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
-  before_action :login_required, except: [:new, :create, :show]
+  before_action :login_required, except: [:new, :create, :show, :likes, :followings, :followers]
   before_action :set_user, only: [:show, :edit, :update, :destroy, :likes]
   before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :count_follow, only: [:show, :likes, :followings, :followers]
   
   def new
     @user = User.new
@@ -47,6 +48,14 @@ class UsersController < ApplicationController
     @favoblogs = @user.favoblogs.page(params[:page]).per(5)
   end
   
+  def followings
+    @followings = @user.followings.page(params[:page]).per(10)
+  end
+  
+  def followers
+    @followers = @user.followers.page(params[:page]).per(10)
+  end
+  
   private
   
   def user_params
@@ -70,5 +79,10 @@ class UsersController < ApplicationController
     unless current_user == @user
       redirect_to root_url
     end
-  end  
+  end
+  
+  def count_follow
+    set_user
+    counts(@user)
+  end
 end

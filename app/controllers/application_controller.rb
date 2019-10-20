@@ -14,4 +14,9 @@ class ApplicationController < ActionController::Base
   def login_required
   	redirect_to root_path unless current_user
   end
+  
+  def counts(user)
+  	@count_followings = user.followings.count
+  	@count_followers = user.followers.count
+  end
 end

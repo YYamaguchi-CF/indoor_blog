@@ -10,7 +10,7 @@
 		</div>
 		<h2><strong><%= @blog.title %></strong></h2>
 		<div>
-			<%= render 'layouts/like_button', blog: @blog %>
+			<%= render 'favorites/like_button', blog: @blog %>
 		</div>
 		<div class="mt-2">
 			<% if @blog.user.image? %>

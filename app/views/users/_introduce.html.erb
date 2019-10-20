@@ -1,0 +1,35 @@
+<div class="row">
+  <aside class="col-sm-4">
+    <div class="card">
+      <div class="card-body">
+        <div class="d-flex justify-content-center"><%= image_tag @user.image.url %></div>
+      </div>
+    </div>
+    <div class="mt-3">
+    	<%= render 'relationships/follow_button', user: @user %>
+    </div>    
+  </aside>
+  <div class="col-sm-8">
+  	<div class="card">
+      <div class="card-header">
+        <h2 class="card-title"><%= @user.name %></h2>
+      	<div class="font-follow">
+      		<strong><%= link_to @count_followings.to_s + ' フォロー', followings_user_path(@user) %><span class="mr-3 ml-3 border-right"></span><%= link_to @count_followers.to_s + ' フォロワー', followers_user_path(@user) %></strong>
+      		<span class="d-flex justify-content-end"><%= link_to 'ホームへ', user_path(@user), class: 'btn btn-outline-dark' %></span>
+      	</div>        
+      </div>
+      <div class="card-body">
+      	<p class="card-text"><%= simple_format @user.introduce %></p>
+      </div>
+    </div>
+ 	</div>   
+</div>
+<div class="d-flex justify-content-end">
+	<% if current_user == @user %>
+		<h5>
+			<%= link_to edit_user_path(current_user), class: 'btn btn-secondary mt-2' do %>
+				<i class="fas fa-cog"></i> 設定
+			<% end %>
+		</h5>
+	<% end %>
+</div>
