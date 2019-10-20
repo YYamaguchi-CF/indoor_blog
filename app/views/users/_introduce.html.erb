@@ -19,7 +19,13 @@
       	</div>        
       </div>
       <div class="card-body">
-      	<p class="card-text"><%= simple_format @user.introduce %></p>
+      	<p class="card-text">
+      		<% unless @user.introduce? %>
+      			まだ自己紹介がありません。
+      		<% else %>
+      			<%= simple_format @user.introduce %>
+      		<% end %>
+      	</p>
       </div>
     </div>
  	</div>   
