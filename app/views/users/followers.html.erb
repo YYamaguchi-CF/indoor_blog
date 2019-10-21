@@ -13,10 +13,10 @@
 							<%= link_to (image_tag follow.image.thumb_secound.url, class: 'image-radius'), user_path(follow) %>
 						<% else %>
 							<%= link_to user_path(follow) do %>
-								<i class="far fa-grin-alt" style="font-size: 80px; color: black;"></i>
+								<i class="far fa-grin-alt" style="font-size: 40px; color: black;"></i>
 							<% end %>
 						<% end %>
-						<span class="name-link"><%= link_to follow.name, user_path(follow) %></span>						
+						<span class="name-link ml-1" style="font-size: 20px;"><%= link_to follow.name, user_path(follow) %></span>						
 					</div>
 					<div class="mt-5 col-sm-4">
 						<%= render 'relationships/follow_button', user: follow %>
