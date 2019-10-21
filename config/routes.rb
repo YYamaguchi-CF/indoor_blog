@@ -20,7 +20,9 @@ Rails.application.routes.draw do
   		get :followers
   	end
   end
-  resources :blogs, except: [:index]
+  resources :blogs, except: [:index] do
+  	resources :comments, only: [:create, :destroy]
+  end
   resource :account, only: [:show, :edit, :update]
   resource :password, only: [:show, :edit, :update]
   resources :favorites, only: [:create, :destroy]

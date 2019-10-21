@@ -20,6 +20,8 @@ class Blog < ApplicationRecord
   belongs_to :user, foreign_key: 'user_id'
   has_many :favorites, foreign_key: 'blog_id', dependent: :destroy
   has_many :users, through: :favorites
+  has_many :comments, foreign_key: 'blog_id', dependent: :destroy
+  has_many :users, through: :comments
   
   class << self
     def janre_text(janre)

@@ -6,6 +6,8 @@ class BlogsController < ApplicationController
   def show
     @blog = Blog.find(params[:id])
     @likes_count = Favorite.where(blog_id: @blog.id).count
+    @comments = @blog.comments.includes(:user).order(created_at: :desc).page(params[:page]).per(10)
+    @comment = @blog.comments.build(user_id: current_user.id) if current_user
   end
 
   def new

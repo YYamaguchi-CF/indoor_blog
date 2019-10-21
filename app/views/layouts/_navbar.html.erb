@@ -9,7 +9,7 @@
       <ul class="navbar-nav">
       	<dl class="searchbox mt-2 mr-2">
   				<%= search_form_for @q, url: root_path do |f| %>
-   			  <dt><%= f.text_field :title_or_body_or_user_name_cont ,placeholder: '投稿者名やキーワードなど' %></dt>
+   			  <dt><%= f.text_field :title_or_body_or_user_name_cont , placeholder: '投稿者名やキーワードなど' %></dt>
  			    <dd><%= f.submit ("検索") , class: 'search-btn'%></dd>
  			  <% end %>
 				</dl>

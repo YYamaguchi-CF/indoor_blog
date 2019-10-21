@@ -32,5 +32,7 @@
 				<%= link_to 'ブログを削除する', blog_path(@blog), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-dark ml-3' %>
 			</div>
 		<% end %>
+		<%= render 'comments/comment', blog: @blog %>
+	
 	</div>
 </div>

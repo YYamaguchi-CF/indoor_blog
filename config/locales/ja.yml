@@ -3,6 +3,7 @@ ja:
     models:
       user: ユーザー
       blog: ブログ
+      comment: コメント
     attributes:
       user:
         name: ニックネーム
@@ -22,6 +23,8 @@ ja:
         game: ゲーム
         movie: 映画
         other: その他
+      comment:
+        content: コメント
   errors:
     messages:
       extension_whitelist_error: はjpg, jpeg, gif, png以外登録できません。

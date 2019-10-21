@@ -20,6 +20,11 @@
 		<span class="name-link"><%= link_to blog.user.name, user_path(blog.user) %></span>
 		<span style="color: #a39e9e;"><%= blog.created_at.strftime("%Y/%m/%d %H:%M") %></span>
 		<span class="d-flex justify-content-end">
+			<% if commented?(blog) %>
+				<span class="mr-2" style="color: #636363; font-size: 20px;"><i class="fas fa-comment"></i> <%= comments_count(blog) %></span>
+			<% else %>
+				<span class="mr-2" style="color: #636363; font-size: 20px;"><i class="far fa-comment-dots"></i> <%= comments_count(blog) %></span>
+			<% end %>
 			<%= render 'favorites/like_button', blog: blog %>
 		</span>
 	</div>

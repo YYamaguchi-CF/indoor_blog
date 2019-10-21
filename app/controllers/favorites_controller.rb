@@ -1,4 +1,6 @@
 class FavoritesController < ApplicationController
+	before_action :login_required
+	
   def create
   	blog = Blog.find(params[:blog_id])
   	current_user.like(blog)

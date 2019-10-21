@@ -1,0 +1,49 @@
+<div class="border-top mt-5"></div>
+<div class="mt-5">
+	<h3 class="mb-4">コメント一覧</h3>
+	<% if @comments.present? %>
+		<% @comments.each do |comment| %>
+			<p><%= simple_format comment.content %></p>
+			<div class="row">
+				<div class="col-sm-8">
+					<% if comment.user.image? %>
+						<%= link_to (image_tag comment.user.image.thumb.url, class: 'image-radius'), user_path(comment.user) %>
+					<% else %>
+						<%= link_to user_path(comment.user) do %>
+							<i class="far fa-grin-alt" style="font-size: 30px; color: black;"></i>
+						<% end %>
+					<% end %>
+					<span class="name-link"><%= link_to comment.user.name, user_path(blog.user) %></span>
+					<span style="color: #a39e9e;"><%= comment.created_at.strftime("%Y/%m/%d %H:%M") %></span>
+				</div>
+				<div class="offset-sm-1 col-sm-3 mt-2">
+					<% if comment.user == current_user %>
+						<%= link_to '削除', blog_comment_path(blog_id: blog, id: comment.id), class: 'btn btn-dark', data: { confirm: '本当にコメント削除しますか？' }, method: :delete %>
+					<% end %>
+				</div>
+			</div>	
+		<% end %>
+	<% else %>
+		<p>このブログにはまだコメントがありません。</p>
+	<% end %>
+</div>
+<% if login? %>
+	<div class="border-top mt-5"></div>
+		<%= form_with(model: [@blog, @comment], local: true) do |f| %>
+			
+			<div class="form-group mt-5">
+				<%= hidden_field_tag :user_id, blog.user.id %>
+	  		<%= f.label :content %>
+	  		<%= f.text_area :content, class: 'form-control',placeholder: '100文字以内で感想など書きましょう', rows: 2 %>
+	  	</div>
+	  	
+	  	<%= button_tag type: 'submit', class: 'btn btn-info' do %>
+				<i class="fas fa-comment"></i> コメントする
+			<% end %>
+		<% end %>
+	</div>
+<% else %>
+	<p class="mt-5">コメントするには<%= link_to 'ログイン', login_path, style: 'color: #255e16;' %>が必要です。</p>
+<% end %>
+
+    	
