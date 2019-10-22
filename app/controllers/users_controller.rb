@@ -45,15 +45,15 @@ class UsersController < ApplicationController
   end
   
   def likes
-    @favoblogs = @user.favoblogs.page(params[:page]).per(5)
+    @favoblogs = @user.favoblogs.order(created_at: :desc).page(params[:page]).per(5)
   end
   
   def followings
-    @followings = @user.followings.page(params[:page]).per(10)
+    @followings = @user.followings.order(name: :asc).page(params[:page]).per(10)
   end
   
   def followers
-    @followers = @user.followers.page(params[:page]).per(10)
+    @followers = @user.followers.order(name: :asc).page(params[:page]).per(10)
   end
 
   private
