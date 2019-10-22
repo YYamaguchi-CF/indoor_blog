@@ -62,7 +62,6 @@ gem 'mini_magick'
 gem 'pry-byebug', group: :development
 gem 'ransack'
 gem 'dotenv-rails'
-gem 'omniauth-facebook'
 
 group :production do
   gem 'pg', '>= 0.18', '< 2.0'
