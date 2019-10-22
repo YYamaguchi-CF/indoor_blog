@@ -1,22 +1,22 @@
 <nav class="janre-tab-color">
 	<ul class="nav nav-tabs row">
 	  <li class="nav-item col-sm-2 text-center mt-1">
-	    <%= link_to_unless_current 'すべて', root_path, class: 'nav-link' %>
+	    <%= link_to_unless_current 'すべて', root_path, class: 'nav-link tab-all' %>
 	  </li>
 	  <li class="nav-item col-sm-2 text-center mt-1">
-	    <%= link_to_unless_current '漫画', janres_manga_path, class: 'nav-link' %>
+	    <%= link_to_unless_current '漫画', janres_manga_path, class: 'nav-link tab-manga' %>
 	  </li>
 	  <li class="nav-item col-sm-2 text-center mt-1">
-	    <%= link_to_unless_current 'アニメ', janres_anime_path, class: 'nav-link' %>
+	    <%= link_to_unless_current 'アニメ', janres_anime_path, class: 'nav-link tab-anime' %>
 	  </li>
 	  <li class="nav-item col-sm-2 text-center mt-1">
-	    <%= link_to_unless_current 'ゲーム', janres_game_path, class: 'nav-link' %>
+	    <%= link_to_unless_current 'ゲーム', janres_game_path, class: 'nav-link tab-game' %>
 	  </li>
 	  <li class="nav-item col-sm-2 text-center mt-1">
-	    <%= link_to_unless_current '映画', janres_movie_path, class: 'nav-link' %>
+	    <%= link_to_unless_current '映画', janres_movie_path, class: 'nav-link tab-movie' %>
 	  </li>
 	  <li class="nav-item col-sm-2 text-center mt-1">
-	    <%= link_to_unless_current 'その他', janres_other_path, class: 'nav-link' %>
+	    <%= link_to_unless_current 'その他', janres_other_path, class: 'nav-link tab-other' %>
 	  </li>
 	</ul>
 </nav>

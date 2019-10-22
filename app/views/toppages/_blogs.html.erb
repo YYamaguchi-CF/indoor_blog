@@ -1,11 +1,11 @@
 <div class="mt-5">
 	<div class="janre-color mt-4" style="background-color: <%= janre_color(blog.janre) %>;">
-		<%= Blog.janre_text(blog.janre) %>
+		<%= link_to Blog.janre_text(blog.janre), janre_path(blog.janre) %>
 	</div>
 	<div class="d-flex justify-content-center mt-4">
-		<%= image_tag blog.blog_images.url %>
+		<%= link_to (image_tag blog.blog_images.url), blog_path(blog) %>
 	</div>
-	<h3 class="mt-2"><strong><%= truncate blog.title, length: 40 %></strong></h3>
+	<h3 class="mt-2"><strong><%= link_to (truncate blog.title, length: 40), blog_path(blog), class: 'blog-title' %></strong></h3>
 	<div class="mt-4">
 		<p><%= truncate blog.body, length: 120 %> <%= link_to '続きを読む', blog_path(blog), class: 'btn btn-info' %></p>
 	</div>

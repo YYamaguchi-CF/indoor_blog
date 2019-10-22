@@ -1,4 +1,5 @@
 module BlogsHelper
+	
 	def janre_color(janre)
 		case janre
 		when 'manga' then
@@ -13,4 +14,20 @@ module BlogsHelper
 			return '#ef7af5'
 		end
 	end
+	
+	def janre_path(janre)
+		case janre
+		when 'manga' then
+			return :janres_manga
+		when 'anime' then
+			return :janres_anime
+		when 'game' then
+			return :janres_game
+		when 'movie'	then
+			return :janres_movie
+		else
+			return :janres_other
+		end
+	end
+	
 end

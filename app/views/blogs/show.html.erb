@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col-sm-6 offset-sm-3">
 		<div class="janre-color" style="background-color: <%= janre_color(@blog.janre) %>;">
-			<%= Blog.janre_text(@blog.janre) %>
+			<%= link_to Blog.janre_text(@blog.janre), janre_path(@blog.janre) %>
 		</div>
 		<div class="text-center mt-2">
 			<div class="mb-5">

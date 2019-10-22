@@ -1,4 +1,29 @@
-.janre-tab-color ul li a {
+.janre-tab-color ul li .tab-all {
     color: white;
-    background-color: #ff9970;
+    background-color: green;
+}
+
+.janre-tab-color ul li .tab-manga{
+    color: white;
+    background-color: #ffd45e;
+}
+
+.janre-tab-color ul li .tab-anime{
+    color: white;
+    background-color: #ff9c5e;
+}
+
+.janre-tab-color ul li .tab-game{
+    color: white;
+    background-color: #96ebd5;
+}
+
+.janre-tab-color ul li .tab-movie{
+    color: white;
+    background-color: #4e495c;
+}
+
+.janre-tab-color ul li .tab-other{
+    color: white;
+    background-color: #ef7af5;
 }

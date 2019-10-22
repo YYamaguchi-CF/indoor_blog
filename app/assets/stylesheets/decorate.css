@@ -23,3 +23,8 @@
     text-decoration: none;
     color: #707070;
 }
+
+strong .blog-title {
+    text-decoration: none;
+    color: black;    
+}
